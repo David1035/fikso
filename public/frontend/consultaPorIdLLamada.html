@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <label for="idLlamada">Id Llamada</label>
+        <input type="text" id="idLlamada">
+        <button id="consulta-registro">Consultar Registro</button>
+        <div class="container-prinipal">
+            <h1 id="id-llamada-container" class="nombre-cliente"></h1>
+            <span id="container-texto"></span>
+        </div>
+    </main>
+    <script>
+        const consultaRegistro = document.getElementById('consulta-registro')
+        async function consultarDatosPorIdLLamada() {
+            const URL = 'http://localhost:5000/api/forms';
+            
+
+            try {
+                const input = document.getElementById('idLlamada');
+                const idLlamada = input.value;
+                const textoContainer = document.getElementById('container-texto')
+                const response = await fetch(URL + '/llamada/' + idLlamada, {
+                    method: 'GET',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    }
+                });
+                console.log(response)
+                const data = await response.json();
+
+                textoContainer.textContent = `Nombre: ${data.name}, Id Llamada: ${data.idLlamada}, ${data.observaciones}, Fecha: ${data.fecha}, Hora: ${data.hora}, AHT: ${data.tiempoPromedio}, Tipo Plantilla: ${data.tipoPlantilla}, Actualización de datos: ${data.actualizacionDatos}`;
+            } catch (error) {
+                
+            }
+
+//             const Form = sequelize.define('Form', {
+//     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+//     idLlamada: {type: DataTypes.STRING, allowNull: true},
+//     name: {type: DataTypes.STRING, allowNull: true},
+//     documentoIdentidad: {type: DataTypes.STRING, allowNull: true},
+//     observaciones: {type: DataTypes.STRING, allowNull: true},
+//     actualizacionDatos: {type: DataTypes.STRING, allowNull: true},
+//     fecha: {type: DataTypes.STRING, allowNull: true},
+//     hora: {type: DataTypes.STRING, allowNull: true},
+//     tiempoPromedio: {type: DataTypes.FLOAT, allowNull: true}, 
+//     tipoPlantilla: {type: DataTypes.STRING, allowNull: true}
+// })
+        }
+        consultaRegistro.addEventListener('click', () => {
+            consultarDatosPorIdLLamada()
+        })
+    </script>
+</body>
+</html>

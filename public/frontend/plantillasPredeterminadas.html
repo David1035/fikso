@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Datos</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <style>
+    .table-container {
+      max-width: 700px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5 table-container">
+    <h1>Registro de Datos</h1>
+    <select class="form-control mb-3" id="tabla-selector" onchange="mostrarTabla()">
+      <option value="">Selecciona una tabla</option>
+      <option value="tabla6">Habilitar Mitigo</option>
+      <option value="tabla1">Agilizar recomendar</option>
+      <option value="tabla2">Activar decos / paquetes</option>
+      <option value="tabla3">Perfil LDAP</option>
+      <option value="tabla4">Portal Cautivo</option>
+      <option value="tabla5">Habilitar Cupos</option>
+      <option value="tabla7">Pedido en Vuelo</option>
+      <option value="tabla8">Enviar Datos</option>  
+    </select>
+
+    <div id="tabla6" class="tabla" style="display:none;">
+      <h2>Habilitar Mitigo</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Login:</td>
+            <td><input type="text" class="form-control" id="login6" value="nherngom"></td>
+          </tr>
+          <tr>
+            <td>Nombre:</td>
+            <td><input type="text" class="form-control" id="nombre"></td>
+          </tr>
+          <tr>
+            <td>Documento de identidad:</td>
+            <td><input type="text" class="form-control" id="documento"></td>
+          </tr>
+          <tr>
+            <td>Contrato hogar:</td>
+            <td><input type="text" class="form-control" id="contrato"></td>
+          </tr>
+          <tr>
+            <td>Celular:</td>
+            <td><input type="text" class="form-control" id="celular"></td>
+          </tr>
+          <tr>
+            <td>Correo electrónico:</td>
+            <td><input type="text" class="form-control" id="correo"></td>
+          </tr>
+          <tr>
+            <td>Falla:</td>
+            <td><input type="text" class="form-control" id="falla"></td>
+          </tr>
+          <tr>
+            <td>Id de llamada:</td>
+            <td><input type="text" class="form-control" id="idLlamada6"></td>
+          </tr>
+          <tr>
+            <td>ID Chat:</td>
+            <td><input type="text" class="form-control" id="id6"></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" onclick="copiarPortapapeles('tabla6')">Copiar al Portapapeles</button>
+      <button class="btn btn-secondary" onclick="reiniciarTabla('tabla6')">Reiniciar Tabla</button>
+    </div>
+
+    <div id="tabla1" class="tabla" style="display:none;">
+      <h2>Agilizar recomendar</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Login:</td>
+            <td><input type="text" class="form-control" id="login" value="nherngom"></td>
+          </tr>
+          <tr>
+            <td>Número de incidente:</td>
+            <td><input type="text" class="form-control" id="incidente"></td>
+          </tr>
+          <tr>
+            <td>Teléfonos (fijo-celular):</td>
+            <td><input type="text" class="form-control" id="telefonos"></td>
+          </tr>
+          <tr>
+            <td>Tipo de solicitud:</td>
+            <td><input type="text" class="form-control" id="solicitud"></td>
+          </tr>
+          <tr>
+            <td>Ciudad:</td>
+            <td><input type="text" class="form-control" id="ciudad"></td>
+          </tr>
+          <tr>
+            <td>Id de llamada:</td>
+            <td><input type="text" class="form-control" id="llamada"></td>
+          </tr>
+          <tr>
+            <td>Disponibilidad:</td>
+            <td><input type="text" class="form-control" id="disponibilidad"></td>
+          </tr>
+          <tr>
+            <td>Motivo:</td>
+            <td><input type="text" class="form-control" id="motivo"></td>
+          </tr>
+          <tr>
+            <td>Id:</td>
+            <td><input type="text" class="form-control" id="id1"></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" onclick="copiarPortapapeles('tabla1')">Copiar al Portapapeles</button>
+      <button class="btn btn-secondary" onclick="reiniciarTabla('tabla1')">Reiniciar Tabla</button>
+    </div>
+
+    <div id="tabla2" class="tabla" style="display:none;">
+      <h2>Activar decos / paquetes</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Login:</td>
+            <td><input type="text" class="form-control" id="login2" value="nherngom"></td>
+          </tr>
+          <tr>
+            <td>Prueba Integrada:</td>
+            <td><input type="text" class="form-control" id="prueba"></td>
+          </tr>
+          <tr>
+            <td>Pedido:</td>
+            <td><input type="text" class="form-control" id="pedido"></td>
+          </tr>
+          <tr>
+            <td>ID TV:</td>
+            <td><input type="text" class="form-control" id="idTv"></td>
+          </tr>
+          <tr>
+            <td>ID Llamada:</td>
+            <td><input type="text" class="form-control" id="idLlamada2"></td>
+          </tr>
+          <tr>
+            <td>MAC's Deco(s) a activar:</td>
+            <td><input type="text" class="form-control" id="macs"></td>
+          </tr>
+          <tr>
+            <td>ID Inconsistencias: (Si aplica)</td>
+            <td><input type="text" class="form-control" id="inconsistencias"></td>
+          </tr>
+          <tr>
+            <td>ID Chat:</td>
+            <td><input type="text" class="form-control" id="idChat"></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" onclick="copiarPortapapeles('tabla2')">Copiar al Portapapeles</button>
+      <button class="btn btn-secondary" onclick="reiniciarTabla('tabla2')">Reiniciar Tabla</button>
+    </div>
+
+    <div id="tabla3" class="tabla" style="display:none;">
+      <h2>Perfil LDAP</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Login:</td>
+            <td><input type="text" class="form-control" id="login3" value="nherngom"></td>
+          </tr>
+          <tr>
+            <td>Prueba Integrada:</td>
+            <td><input type="text" class="form-control" id="prueba3"></td>
+          </tr>
+          <tr>
+            <td>Pedido (velocidad del BA):</td>
+            <td><input type="text" class="form-control" id="pedido3"></td>
+          </tr>
+          <tr>
+            <td>ID BA:</td>
+            <td><input type="text" class="form-control" id="idBa"></td>
+          </tr>
+          <tr>
+            <td>ID Llamada:</td>
+            <td><input type="text" class="form-control" id="idLlamada3"></td>
+          </tr>
+          <tr>
+            <td>MAC:</td>
+            <td><input type="text" class="form-control" id="mac3"></td>
+          </tr>
+          <tr>
+            <td>Observación:</td>
+            <td><input type="text" class="form-control" id="observacion3"></td>
+          </tr>
+          <tr>
+            <td>ID Chat:</td>
+            <td><input type="text" class="form-control" id="id3"></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" onclick="copiarPortapapeles('tabla3')">Copiar al Portapapeles</button>
+      <button class="btn btn-secondary" onclick="reiniciarTabla('tabla3')">Reiniciar Tabla</button>
+    </div>
+
+    <div id="tabla4" class="tabla" style="display:none;">
+      <h2>Portal Cautivo</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Login:</td>
+            <td><input type="text" class="form-control" id="login4" value="nherngom"></td>
+          </tr>
+          <tr>
+            <td>Prueba Integrada:</td>
+            <td><input type="text" class="form-control" id="prueba4"></td>
+          </tr>
+          <tr>
+            <td>MAC Registrada en CRM:</td>
+            <td><input type="text" class="form-control" id="macCrm"></td>
+          </tr>
+          <tr>
+            <td>MAC Reportada en el Portal:</td>
+            <td><input type="text" class="form-control" id="macPortal"></td>
+          </tr>
+          <tr>
+            <td>ID Servicio:</td>
+            <td><input type="text" class="form-control" id="idServicio"></td>
+          </tr>
+          <tr>
+            <td>CC Cliente:</td>
+            <td><input type="text" class="form-control" id="ccCliente"></td>
+          </tr>
+          <tr>
+            <td>ID Llamada:</td>
+            <td><input type="text" class="form-control" id="idLlamada4"></td>
+          </tr>
+          <tr>
+            <td>Dirección de servicio:</td>
+            <td><input type="text" class="form-control" id="direccion"></td>
+          </tr>
+          <tr>
+            <td>Plan de Facturación:</td>
+            <td><input type="text" class="form-control" id="planFacturacion"></td>
+          </tr>
+          <tr>
+            <td>Pedido de Instalación:</td>
+            <td><input type="text" class="form-control" id="pedidoInstalacion"></td>
+          </tr>
+          <tr>
+            <td>Fecha de Agenda Instalación:</td>
+            <td><input type="text" class="form-control" id="fechaAgenda"></td>
+          </tr>
+          <tr>
+            <td>Notas Adicionales:</td>
+            <td><input type="text" class="form-control" id="notasAdicionales"></td>
+          </tr>
+          <tr>
+            <td>ID Chat:</td>
+            <td><input type="text" class="form-control" id="id4"></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" onclick="copiarPortapapeles('tabla4')">Copiar al Portapapeles</button>
+      <button class="btn btn-secondary" onclick="reiniciarTabla('tabla4')">Reiniciar Tabla</button>
+    </div>
+
+    <div id="tabla5" class="tabla" style="display:none;">
+      <h2>Habilitar Cupos</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Login:</td>
+            <td><input type="text" class="form-control" id="login5" value="nherngom"></td>
+          </tr>
+          <tr>
+            <td>Número de incidente:</td>
+            <td><input type="text" class="form-control" id="incidente5"></td>
+          </tr>
+          <tr>
+            <td>Teléfonos:</td>
+            <td><input type="text" class="form-control" id="telefonos5"></td>
+          </tr>
+          <tr>
+            <td>Tipo de solicitud:</td>
+            <td><input type="text" class="form-control" id="solicitud5"></td>
+          </tr>
+          <tr>
+            <td>Ciudad:</td>
+            <td><input type="text" class="form-control" id="ciudad5"></td>
+          </tr>
+          <tr>
+            <td>Id de llamada:</td>
+            <td><input type="text" class="form-control" id="llamada5"></td>
+          </tr>
+          <tr>
+            <td>Disponibilidad:</td>
+            <td><input type="text" class="form-control" id="disponibilidad5"></td>
+          </tr>
+          <tr>
+            <td>Motivo:</td>
+            <td><input type="text" class="form-control" id="motivo5"></td>
+          </tr>
+          <tr>
+            <td>ID Chat:</td>
+            <td><input type="text" class="form-control" id="id5"></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" onclick="copiarPortapapeles('tabla5')">Copiar al Portapapeles</button>
+      <button class="btn btn-secondary" onclick="reiniciarTabla('tabla5')">Reiniciar Tabla</button>
+    </div>
+
+    <div id="tabla7" class="tabla" style="display:none;">
+      <h2>Pedido en Vuelo</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nombre Cliente:</td>
+            <td><input type="text" class="form-control" id="nombreCliente"></td>
+          </tr>
+          <tr>
+            <td>Celular de contacto:</td>
+            <td><input type="text" class="form-control" id="celularContacto"></td>
+          </tr>
+          <tr>
+            <td>Dirección:</td>
+            <td><input type="text" class="form-control" id="direccionVuelo"></td>
+          </tr>
+          <tr>
+            <td>Motivo de contacto:</td>
+            <td><input type="text" class="form-control" id="motivoContacto"></td>
+          </tr>
+          <tr>
+            <td>Id de llamada:</td>
+            <td><input type="text" class="form-control" id="idLlamadaVuelo"></td>
+          </tr>
+          <tr>
+            <td>Cantidad de equipos:</td>
+            <td><input type="text" class="form-control" id="cantidadEquipos"></td>
+          </tr>
+          <tr>
+            <td>Tigo de excepción:</td>
+            <td><input type="text" class="form-control" id="tigoExcepcion"></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" onclick="copiarPortapapeles('tabla7')">Copiar al Portapapeles</button>
+      <button class="btn btn-secondary" onclick="reiniciarTabla('tabla7')">Reiniciar Tabla</button>
+    </div>
+
+    <div id="tabla8" class="tabla" style="display:none;">
+      <h2>Enviar Datos</h2>
+      <table class="table">
+        <thead>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Activo:</td>
+            <td><input type="text" class="form-control" id="activo"></td>
+          </tr>
+          <tr>
+            <td>Alias:</td>
+            <td><input type="text" class="form-control" id="nodo"></td>
+          </tr>
+          <tr>
+            <td>Cmts/Arpon:</td>
+            <td><input type="text" class="form-control" id="cmts"></td>
+          </tr>
+          <tr>
+            <td>Ciudad:</td>
+            <td><input type="text" class="form-control" id="ciudadEnviar"></td>
+          </tr>
+          <tr>
+            <td>Naturaleza:</td>
+            <td><input type="text" class="form-control" id="naturaleza"></td>
+          </tr>
+          <tr>
+            <td>Equipo:</td>
+            <td><input type="text" class="form-control" id="equipo"></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" onclick="copiarPortapapeles('tabla8')">Copiar al Portapapeles</button>
+      <button class="btn btn-secondary" onclick="reiniciarTabla('tabla8')">Reiniciar Tabla</button>
+    </div>
+  </div>
+
+  <script>
+    function mostrarTabla() {
+  const selector = document.getElementById('tabla-selector');
+  const tablas = document.querySelectorAll('.tabla');
+  tablas.forEach(tabla => {
+      tabla.style.display = 'none';
+  });
+
+  const tablaSeleccionada = selector.value;
+  if (tablaSeleccionada) {
+      document.getElementById(tablaSeleccionada).style.display = 'block';
+  }
+}
+
+function copiarPortapapeles(tablaId) {
+  let datos = [];
+  let titulo = '';
+  const saludo = obtenerSaludo(); // Obtener el saludo correspondiente
+  const saludito = soloSaludar() // solo saludar
+
+  switch (tablaId) {
+      case 'tabla1':
+          titulo = 'Agilizar recomendar';
+          datos = [
+              `Login: ${document.getElementById('login').value}`,
+              `Número de incidente: ${document.getElementById('incidente').value}`,
+              `Teléfonos (fijo-celular): ${document.getElementById('telefonos').value}`,
+              `Tipo de solicitud: ${document.getElementById('solicitud').value}`,
+              `Ciudad: ${document.getElementById('ciudad').value}`,
+              `Id de llamada: ${document.getElementById('llamada').value}`,
+              `Disponibilidad: ${document.getElementById('disponibilidad').value}`,
+              `Motivo: ${document.getElementById('motivo').value}`,
+              `Id: ${document.getElementById('id1').value}`
+          ];
+          break;
+      case 'tabla2':
+          titulo = 'Activar decos / paquetes';
+          datos = [
+              `Login: ${document.getElementById('login2').value}`,
+              `Prueba Integrada: ${document.getElementById('prueba').value}`,
+              `Pedido: ${document.getElementById('pedido').value}`,
+              `ID TV: ${document.getElementById('idTv').value}`,
+              `ID Llamada: ${document.getElementById('idLlamada2').value}`,
+              `MAC's Deco(s) a activar: ${document.getElementById('macs').value}`,
+              `ID Inconsistencias: ${document.getElementById('inconsistencias').value}`,
+              `ID Chat: ${document.getElementById('idChat').value}`
+          ];
+          break;
+      case 'tabla3':
+          titulo = 'Perfil LDAP';
+          datos = [
+              `Login: ${document.getElementById('login3').value}`,
+              `Prueba Integrada: ${document.getElementById('prueba3').value}`,
+              `Pedido (velocidad del BA): ${document.getElementById('pedido3').value}`,
+              `ID BA: ${document.getElementById('idBa').value}`,
+              `ID Llamada: ${document.getElementById('idLlamada3').value}`,
+              `MAC: ${document.getElementById('mac3').value}`,
+              `Observación: ${document.getElementById('observacion3').value}`,
+              `Id: ${document.getElementById('id3').value}`
+          ];
+          break;
+      case 'tabla4':
+          titulo = 'Portal Cautivo';
+          datos = [
+              `Login: ${document.getElementById('login4').value}`,
+              `Prueba Integrada: ${document.getElementById('prueba4').value}`,
+              `MAC Registrada en CRM: ${document.getElementById('macCrm').value}`,
+              `MAC Reportada en el Portal: ${document.getElementById('macPortal').value}`,
+              `ID Servicio: ${document.getElementById('idServicio').value}`,
+              `CC Cliente: ${document.getElementById('ccCliente').value}`,
+              `ID Llamada: ${document.getElementById('idLlamada4').value}`,
+              `Dirección de servicio: ${document.getElementById('direccion').value}`,
+              `Plan de Facturación: ${document.getElementById('planFacturacion').value}`,
+              `Pedido de Instalación: ${document.getElementById('pedidoInstalacion').value}`,
+              `Fecha de Agenda Instalación: ${document.getElementById('fechaAgenda').value}`,
+              `Notas Adicionales: ${document.getElementById('notasAdicionales').value}`,
+              `Id: ${document.getElementById('id4').value}`
+          ];
+          break;
+      case 'tabla5':
+          titulo = 'Habilitar Cupos';
+          datos = [
+              `Login: ${document.getElementById('login5').value}`,
+              `Número de incidente: ${document.getElementById('incidente5').value}`,
+              `Teléfonos: ${document.getElementById('telefonos5').value}`,
+              `Tipo de solicitud: ${document.getElementById('solicitud5').value}`,
+              `Ciudad: ${document.getElementById('ciudad5').value}`,
+              `Id de llamada: ${document.getElementById('llamada5').value}`,
+              `Disponibilidad: ${document.getElementById('disponibilidad5').value}`,
+              `Motivo: ${document.getElementById('motivo5').value}`,
+              `Id: ${document.getElementById('id5').value}`
+          ];
+          break;
+      case 'tabla6':
+          titulo = 'Habilitar Mitigo';
+          datos = [
+              `Login: ${document.getElementById('login6').value}`,
+              `Nombre: ${document.getElementById('nombre').value}`,
+              `Documento de identidad: ${document.getElementById('documento').value}`,
+              `Contrato hogar: ${document.getElementById('contrato').value}`,
+              `Celular: ${document.getElementById('celular').value}`,
+              `Correo electrónico: ${document.getElementById('correo').value}`,
+              `Falla: ${document.getElementById('falla').value}`,
+              `Id de llamada: ${document.getElementById('idLlamada6').value}`,
+              `Id: ${document.getElementById('id6').value}`
+          ];
+          break;
+      case 'tabla7':
+          titulo = 'Pedido en Vuelo';
+          datos = [
+              `Nombre Cliente: ${document.getElementById('nombreCliente').value}`,
+              `Celular de contacto: ${document.getElementById('celularContacto').value}`,
+              `Dirección: ${document.getElementById('direccionVuelo').value}`,
+              `Motivo de contacto: ${document.getElementById('motivoContacto').value}`,
+              `Id de llamada: ${document.getElementById('idLlamadaVuelo').value}`,
+              `Cantidad de equipos: ${document.getElementById('cantidadEquipos').value}`,
+              `Tigo de excepción: ${document.getElementById('tigoExcepcion').value}`
+          ];
+          break;
+      case 'tabla8':
+          titulo = 'Datos';
+          datos = [
+              `Activo: ${document.getElementById('activo').value}`,
+              `Alias: ${document.getElementById('nodo').value}`,
+              `Cmts/Arpon: ${document.getElementById('cmts').value}`,
+              `Ciudad: ${document.getElementById('ciudadEnviar').value}`,
+              `Naturaleza: ${document.getElementById('naturaleza').value}`,
+              `Marca y Ref Equipo: ${document.getElementById('equipo').value}`
+          ];
+          break;
+  }
+
+  // Combina el saludo, el título y los datos
+  let texto = [];
+  if(titulo === 'Agilizar recomendar') {
+    texto = [saludito, ...datos].join('\n');
+  } else if(titulo === 'Agilizar recomendar') {
+    texto = [titulo, ...datos].join('\n');
+  } else {
+    texto = [saludo, titulo, ...datos].join('\n');
+  }
+  
+  
+  // Copiar el texto al portapapeles
+  navigator.clipboard.writeText(texto).then(() => {
+      alert('Datos copiados al portapapeles');
+  }).catch(err => {
+      alert('Error al copiar los datos: ', err);
+  });
+}
+
+function reiniciarTabla(tablaId) {
+  const inputs = document.querySelectorAll(`#${tablaId} input`);
+  inputs.forEach(input => {
+      if (input.id.startsWith('login')) {
+          input.value = 'nherngom';
+      } else {
+          input.value = '';
+      }
+  });
+}
+
+function obtenerSaludo() {
+  const fechaActual = new Date();
+  const hora = fechaActual.getHours();
+
+  let saludo;
+
+  if (hora >= 6 && hora < 12) {
+      saludo = "Buenos días, ¿podrías por favor ayudarme con el siguiente requerimiento?";
+  } else if (hora >= 12 && hora < 18) {
+      saludo = "Buenas tardes, ¿podrías por favor ayudarme con el siguiente requerimiento?";
+  } else {
+      saludo = "Buenas noches, ¿podrías por favor ayudarme con el siguiente requerimiento?";
+  }
+
+  return saludo;
+}
+
+function soloSaludar() {
+    const fechaActual = new Date();
+    const hora = fechaActual.getHours();
+  
+    let saludito;
+  
+    if (hora >= 6 && hora < 12) {
+        saludito = "Buenos días";
+    } else if (hora >= 12 && hora < 18) {
+        saludito = "Buenas tardes";
+    } else {
+        saludito = "Buenas noches";
+    }
+  
+    return saludito;
+  }
+  </script>
+</body>
+</html>

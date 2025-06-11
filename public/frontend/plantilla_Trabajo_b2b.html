@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar datos</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <style>
+            body {
+            display: grid;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .main-container {
+            margin-top: 60px;
+            max-width: 400px;
+            display: grid;
+            justify-content: center;
+            background-color: rgb(250, 253, 255);
+            padding: 20px;
+
+        }
+        .input-container {
+            width: 95px;
+            height: 16px;
+            border-radius: 5px;
+            border: 1px solid #297e21;
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0 , 0.1);
+            
+        }
+        .select-container {
+            border-radius: 15px;
+            border: 1px solid #297e21;
+            border: none;
+        }
+        .form-container-class {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 10%;
+        }
+
+        .observaciones-container {
+            width: 90%;
+            border-radius: 12px;
+            border: 1px solid transparent; /* Define un borde inicial transparente */
+            outline: none; /* Elimina el contorno predeterminado al hacer focus */
+            padding: 5px;
+            overflow: hidden;
+            resize: none;
+            height: 50px;
+            line-height: 1.5;
+            box-sizing: border-box;
+            box-shadow: 0 0 10px rgba(0, 0, 0 , 0.1);
+        }
+        .observaciones-container:focus {
+            background-color: #F4FFC3;
+            box-shadow: 0 0 10px rgba(0, 0, 0 , 0.1);
+            }
+            .observaciones-container:hover {
+                background-color: #F4FFC3;
+                box-shadow: 0 0 10px rgba(0, 0, 0 , 0.1);
+                }
+        .btnGeneral:focus {
+            background-color: #97cef3;
+            outline: none;
+        }
+        .btnGeneral:hover {
+            background-color: #97cef3;
+            outline: none;
+        }
+        .btnGeneral {
+            width: 70px;
+            background-color: #eeeda6;
+            border: 1px solid transparent;
+            padding: 3px 6px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            color: #297e21;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            transition: 0.3s;
+            
+            }
+        input:hover {
+            background-color: #F4FFC3;
+        }
+        input:focus {
+            background-color: #F4FFC3;
+            }
+            select:hover {
+                background-color: #F4FFC3;
+                }
+                select:focus {
+                    background-color: #F4FFC3;
+                    }
+        /* Estilos para los botones habilitados */
+        button:enabled {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Estilos para los botones deshabilitados */
+        button:disabled {
+            background-color: #ccc; /* Color gris para indicar que está deshabilitado */
+            color: #666;           /* Texto más claro */
+            cursor: not-allowed;   /* Cambiar el cursor a "prohibido" */
+            opacity: 0.6;          /* Reducir opacidad */
+        }
+
+        .invisible {
+            display: none;
+        }
+
+        .contador-tiempo-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0 , 0.1);
+        }
+    </style>
+</head>
+<body>
+    <main class="main-container">
+        <form action="" id="form-container" class="form-container-class">
+            <button id="btnInicio" class="btnGeneral">INICIO</button>
+
+            <label for="id-llamada">Id</label>
+            <input type="text" id="id-llamada" class="input-container">
+
+            <label for="name">Name</label>
+            <input type="text" id="name" class="input-container">
+            <label for="documentoIdentidad">CC</label>
+            <input type="number" id="documentoIdentidad" class="input-container">
+            <label for="smnet">Smnet</label>
+            <input type="text" id="smnet" class="input-container">
+
+            <label for="observaciones"></label>
+            <textarea id="observaciones" class="observaciones-container"></textarea>
+
+            <label for="tecnology">Tecnology</label>
+            <select name="tecnology" id="tecnology" class="select-container"></select>
+            <label for="tipoServicio">Tigo</label>
+            <select name="tipoServicio" id="tipoServicio" class="select-container"></select>
+            <label for="naturaleza">Falla</label>
+            <select name="naturaleza" id="naturaleza" class="select-container"></select>
+            
+            <label for="actualizacion-datos">Datos</label>
+            <select name="actualizacion-datos" id="actualizacion-datos" class="select-container">
+                <option value="no">No</option>
+                <option value="si">Si</option>
+            </select>
+            <label for="guion-agendamiento">Guion</label>
+            <select name="guion-agendamiento" id="guion-agendamiento" class="select-container">
+                <option value="no">No</option>
+                <option value="si">Si</option>
+            </select>
+
+            <label for="celular">Teléfono</label>
+            <input type="text" id="celular" class="input-container">
+
+            <label for="correo">email</label>
+            <input type="email" id="correo" class="input-container">
+
+            <label for="horario-b2b">¿Horario de B2B?</label>
+            <select name="horario-b2b" id="horario-b2b" class="select-container">
+                <option value="no">No</option>
+                <option value="si">Si</option>
+            </select>
+
+            <div id="horario-b2b-invisible" class="form-container-class invisible">
+                <label for="atiende-b2b">Atiende</label>
+            <input type="text" id="atiende-b2b" class="input-container">
+            <label for="celular-b2b">Celular</label>
+            <input type="text" id="celular-b2b" class="input-container">
+            
+            
+            <label for="dias-atencion">Dias Atiende</label>
+            <select name="dias-atencion" id="dias-atencion" class="select-container">
+                <option value="Lunes a Viernes">Lunes a Viernes</option>
+                <option value="Lunes a Sábado">Lunes a Sábado</option>
+                <option value="Lunes a Domingo">Lunes a Domingo</option>
+            </select>
+            <label for="horario-atencion">Horario</label>
+            <input type="text" id="horario-atencion" class="input-container">
+
+            <!-- Nuevos campos -->
+            <label for="permiso-especial">Si se requiere permiso especial</label>
+            <input type="text" id="permiso-especial" class="input-container" required>
+                
+            <label for="horario-especial-sabado">Horario especial día sábado</label>
+            <input type="text" id="horario-especial-sabado" class="input-container">
+                
+            <label for="horario-especial-domingo">Horario especial día domingo</label>
+            <input type="text" id="horario-especial-domingo" class="input-container">
+            </div>
+            
+            <button id="btnCopiar" class="btnGeneral">COPIAR</button>
+            <button id="btnEnviar" class="btnGeneral">ENVIAR</button>
+
+            <label for="modoDeTrabajo">Plantilla </label>
+            <select name="modoDeTrabajo" id="modoDeTrabajo" class="select-container btnGeneral">
+                <option value="N2">N2</option>
+                <option value="N1">N1</option>
+            </select>
+
+        </form>
+        <h1 id="datos-copiados" class="datos-copiados"></h1>
+        <p id="totalTiempoText" class="contador-tiempo-container"></p>
+        <button id="localStorageButton" class="btnGeneral">Borrar promedio</button>
+    </main>
+    <script>
+        let horaInicial;
+let horaFinal;
+let hora;
+let fecha;
+// Extensión para manejar el contador con alarmas
+let interval; // Variable para el intervalo
+let startTime; // Tiempo de inicio del contador
+let isRunning = false; // Estado del contador
+let aht = ''
+const btnInicio = document.getElementById('btnInicio')
+const observacionesText = document.getElementById('observaciones');
+const btnCopiar = document.getElementById('btnCopiar')
+const btnEnviar = document.getElementById('btnEnviar')
+const selectTecnology = document.getElementById('tecnology');
+const selectTipoServicio = document.getElementById('tipoServicio');
+const selectNaturaleza = document.getElementById('naturaleza');
+const idLlamada = document.getElementById('id-llamada');
+
+
+btnEnviar.disabled = true;
+btnInicio.addEventListener('click', function(event) {
+    event.preventDefault();
+    horaInicial = new Date();
+    hora = horaInicial.toTimeString().split(' ')[0]; // solo hora
+    fecha = horaInicial.toISOString().split('T')[0]; // solo fecha
+    console.log(hora);
+    startCounter()
+    insertarTexto()
+    btnInicio.disabled = true;
+    btnEnviar.disabled = false;
+    idLlamada.focus()
+})
+
+
+observacionesText.addEventListener('input', () => {
+    observacionesText.style.height = 'auto';
+    observacionesText.style.height = `${observacionesText.scrollHeight}px`;
+});
+
+
+
+btnCopiar.addEventListener('click', function(event) {
+    event.preventDefault()
+    console.log(horaInicial)
+    copiarDatos()
+    btnEnviar.focus()
+})
+
+
+
+btnEnviar.addEventListener('click', function(event) {
+    event.preventDefault()
+    if(horaInicial){
+        calcularTiempo()
+        btnInicio.disabled = false;
+    } 
+    btnInicio.focus()
+    descargarDatos()
+    insertarTexto()
+    limpiarDatosForm()
+    stopCounter()
+})
+
+function calcularTiempo() {
+    horaFinal = new Date();
+    console.log(horaFinal.getHours())
+    const modoDeTrabajo = document.getElementById('modoDeTrabajo')
+
+    if(modoDeTrabajo.value === 'N2') {
+        const diferenciaMilisegundos = horaFinal - horaInicial;
+        const diferenciaSegundos = Math.floor(diferenciaMilisegundos / 1000);
+
+        let tiempoTotal = parseInt(localStorage.getItem('n2')) || 0;
+        tiempoTotal += diferenciaSegundos;
+        localStorage.setItem('n2', tiempoTotal)
+
+        let counter = parseInt(localStorage.getItem('counterN2') || 0);
+        counter++;
+        localStorage.setItem('counterN2', counter)
+    } else {
+        const diferenciaMilisegundos = horaFinal - horaInicial;
+        const diferenciaSegundos = Math.floor(diferenciaMilisegundos / 1000);
+
+        let tiempoTotal = parseInt(localStorage.getItem('n1')) || 0;
+        tiempoTotal += diferenciaSegundos;
+        localStorage.setItem('n1', tiempoTotal)
+
+        let counter = parseInt(localStorage.getItem('counterN1') || 0);
+        counter++;
+        localStorage.setItem('counterN1', counter)
+    }
+    
+}
+
+function insertarTexto() {
+    const modoDeTrabajo = document.getElementById('modoDeTrabajo')
+    const totalTiempotext = document.getElementById('totalTiempoText')
+    if(modoDeTrabajo.value === 'N2') {
+        const totalPrueba = parseInt(localStorage.getItem('n2'))
+        const counter = parseInt(localStorage.getItem('counterN2'))
+        if(totalPrueba > 0) {
+            aht = `AHT de N2: --- ${(totalPrueba/counter).toFixed()}, Min ${((totalPrueba/60)/counter).toFixed(1)}`
+            totalTiempotext.textContent = aht;
+            } else {
+                totalTiempotext.textContent = '0'
+            }
+    } else {
+        const totalPrueba = parseInt(localStorage.getItem('n1'))
+        const counter = parseInt(localStorage.getItem('counterN1'))
+        if(totalPrueba > 0) {
+            aht = `AHT n1: --- ${(totalPrueba/counter).toFixed()}, Min ${((totalPrueba/60)/counter).toFixed(1)}`
+            totalTiempotext.textContent = aht;
+            } else {
+                totalTiempotext.textContent = '0'
+            }
+    }
+    
+}
+insertarTexto()
+function insertarTextDinamico() {
+    const modoDeTrabajo = document.getElementById('modoDeTrabajo')
+    modoDeTrabajo.addEventListener('change' , () => { insertarTexto()})
+}
+insertarTextDinamico()
+
+const localStorageButton = document.getElementById('localStorageButton').addEventListener('click', function(event) {
+    event.preventDefault()
+    localStorage.clear()
+    insertarTexto()
+    })
+
+function copiarDatos () {
+    const smnet = document.getElementById('smnet')
+    const observaciones = document.getElementById('observaciones')
+    const tecnology = document.getElementById('tecnology');
+    const tipoServicio = document.getElementById('tipoServicio')
+    const naturaleza = document.getElementById('naturaleza')
+    const horarioB2B = document.getElementById('horario-b2b')
+    const atiendeB2b = document.getElementById('atiende-b2b')
+    const celularB2b = document.getElementById('celular-b2b')
+    const diasAtencion = document.getElementById('dias-atencion')
+    const horarioAtencion = document.getElementById('horario-atencion')
+    const documento = document.getElementById('documentoIdentidad')
+    const cel = document.getElementById('celular')
+    const correo = document.getElementById('correo')
+    const permisoEspecial = document.getElementById('permiso-especial')
+    const horarioEspecialSabado = document.getElementById('horario-especial-sabado')
+    const horarioEspecialDomingo = document.getElementById('horario-especial-domingo')
+
+    if(horarioB2B.value === 'si'){
+        let email;
+        if(correo.value === ''){
+            email = ''
+        } else {
+            email = `, correo: ${correo.value}`
+        }
+        const plantillaCreada = `Observaciones: ${observaciones.value}, Id de la llamada ${idLlamada.value}, SMNET: ${smnet.value}, Tecnología: ${tecnology.value}, Tipo de servicio: ${tipoServicio.value}, Naturaleza del problema: ${naturaleza.value}. Horario B2B activo. Los datos del representante encargado de atender la visita se especifican a continuación: nombre: ${atiendeB2b.value}, celular: ${celularB2b.value}${email.value}, días de atención: ${diasAtencion.value}, en el horario: ${horarioAtencion.value}, Si se requiere permiso especial o algún documento: ${permisoEspecial.value}, Horario especial día sábado (si es diferente al indicado): ${horarioEspecialSabado.value}, Horario especial día domingo (si es diferente al indicado): ${horarioEspecialDomingo.value} Doc/NIT: ${documento.value}`;
+        return navigator.clipboard.writeText(plantillaCreada)
+    } else {
+        let celular;
+        if(cel.value > 0){
+            celular = `, cel: ${cel.value}`
+        } else {
+            celular = ''
+        }
+        let email;
+        if(correo.value === ''){
+            email = ''
+        } else {
+            email = `, correo: ${correo.value}`
+        }
+        const plantillaCreada = `Observaciones: ${observaciones.value}, Id de la llamada ${idLlamada.value}, Id prueba SMNET: ${smnet.value}, Tecnología: ${tecnology.value}, Tipo de servicio: ${tipoServicio.value}, Naturaleza del problema: ${naturaleza.value}, documento: ${documento.value}${celular}${email.value}`;
+        return navigator.clipboard.writeText(plantillaCreada)
+        }
+}
+
+function limpiarDatosForm () {
+    document.getElementById('id-llamada').value = '';
+    document.getElementById('smnet').value = '';
+    document.getElementById('name').value = '';
+    document.getElementById('observaciones').value = '';
+    document.getElementById('tecnology').value = '';
+    document.getElementById('tipoServicio').value = '';
+    document.getElementById('naturaleza').value = '';
+    document.getElementById('celular').value = '';
+    document.getElementById('horario-b2b').value = 'no';
+    document.getElementById('documentoIdentidad').value = '';
+    document.getElementById('atiende-b2b').value = '';
+    document.getElementById('celular-b2b').value = '';
+    document.getElementById('dias-atencion').value = 'Lunes a Viernes';
+    document.getElementById('actualizacion-datos').value = 'no';
+    document.getElementById('guion-agendamiento').value = 'no';
+    document.getElementById('correo').value = '';
+    document.getElementById('permiso-especial').value = '';
+    document.getElementById('horario-especial-sabado').value = '';
+    document.getElementById('horario-especial-domingo').value = '';
+
+    ocultarB2b()
+
+    function reiniciarObservaciones () {
+        const observacioines = document.getElementById('observaciones')
+        observacioines.style.height = 'auto'
+    }
+    reiniciarObservaciones()
+}
+
+/*Cambiar de forma dinámica b2b */
+
+function ocultarB2b() {
+    const dinamicB2bInvisible = document.getElementById('horario-b2b');
+    const invisible = document.getElementById('horario-b2b-invisible');
+
+    function actualizarVisibilidad () {
+        if(dinamicB2bInvisible.value === 'si'){
+            
+            invisible.style.display = 'block';
+        }else {
+            const invisible = document.getElementById('horario-b2b-invisible');
+            invisible.style.display = 'none';
+        }
+    }
+    dinamicB2bInvisible.addEventListener('change', actualizarVisibilidad);
+    actualizarVisibilidad()
+}   
+ocultarB2b() 
+
+function descargarDatos() {
+    const smnet = document.getElementById('smnet');
+    const observaciones = document.getElementById('observaciones');
+    const tecnology = document.getElementById('tecnology');
+    const tipoServicio = document.getElementById('tipoServicio');
+    const naturaleza = document.getElementById('naturaleza');
+    const horarioB2B = document.getElementById('horario-b2b');
+    const atiendeB2b = document.getElementById('atiende-b2b');
+    const celularB2b = document.getElementById('celular-b2b');
+    const diasAtencion = document.getElementById('dias-atencion');
+    const horarioAtencion = document.getElementById('horario-atencion');
+    const documento = document.getElementById('documentoIdentidad');
+    const cel = document.getElementById('celular');
+    const actualizacion = document.getElementById('actualizacion-datos');
+    const guion = document.getElementById('guion-agendamiento');
+    const correo= document.getElementById('correo');
+    const permisoEspecial = document.getElementById('permiso-especial')
+    const horarioEspecialSabado = document.getElementById('horario-especial-sabado')
+    const horarioEspecialDomingo = document.getElementById('horario-especial-domingo')
+
+    let plantillaCreada;
+
+    if (horarioB2B.value === 'si') {
+        let email;
+        if(correo.value === ''){
+            email = ''
+        } else {
+            email = `, correo: ${correo.value}`
+        }
+        plantillaCreada = `Hora ${hora}, fecha ${fecha} Observaciones: ${observaciones.value}, Id de la llamada ${idLlamada.value}, SMNET: ${smnet.value}, Tecnología: ${tecnology.value}, Tipo de servicio: ${tipoServicio.value}, Naturaleza del problema: ${naturaleza.value}. Horario B2B activo. Los datos del representante encargado de atender la visita se especifican a continuación: nombre: ${atiendeB2b.value}, celular: ${celularB2b.value}${email.value}, días de atención: ${diasAtencion.value}, en el horario: ${horarioAtencion.value}, Si se requiere permiso especial o algún documento: ${permisoEspecial.value}, Horario especial día sábado (si es diferente al indicado): ${horarioEspecialSabado.value}, Horario especial día domingo (si es diferente al indicado): ${horarioEspecialDomingo.value} Doc/NIT: ${documento.value}, ¿actualicé los datos? ${actualizacion.value}, ¿brindé guion de agendamiento? ${guion.value}, ${aht}`;
+    } else {
+        let celular;
+        if(cel.value > 0){
+            celular = `, cel: ${cel.value}`
+        } else {
+            celular = ''
+        }
+        let email;
+        if(correo.value === ''){
+            email = ''
+        } else {
+            email = `, correo: ${correo.value}`
+        }
+        plantillaCreada = `Hora ${hora}, fecha ${fecha} Observaciones: ${observaciones.value}, Id de la llamada ${idLlamada.value}, SMNET: ${smnet.value}, Tecnología: ${tecnology.value}, Tipo de servicio: ${tipoServicio.value}, Naturaleza del problema: ${naturaleza.value}, documento: ${documento.value}${celular}${email}, ¿actualicé los datos? ${actualizacion.value}, ¿brindé guion de agendamiento? ${guion.value}, ${aht}`;
+    }
+
+    // Crear un archivo con el contenido de la plantilla
+    const blob = new Blob([plantillaCreada], { type: 'text/plain' });
+    const enlace = document.createElement('a');
+    enlace.href = URL.createObjectURL(blob);
+
+    // Usar el valor del documento como nombre del archivo
+    enlace.download = `${fecha} ${documento.value || 'descarga'} - ${idLlamada.value || 'sin id'}.txt`;
+
+    // Agregar al DOM, simular clic y remover
+    document.body.appendChild(enlace);
+    enlace.click();
+    document.body.removeChild(enlace);
+}
+
+// Función para reproducir un sonido genérico
+function playSound(frequency = 440, duration = 1000) {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+    gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.start();
+    setTimeout(() => {
+        oscillator.stop();
+        audioContext.close();
+    }, duration);
+}
+
+// Función para iniciar el contador
+function startCounter() {
+    if (isRunning) return; // Evita múltiples inicios
+    isRunning = true;
+
+    startTime = Date.now();
+    let hasPlayedInitialAlarm = false;
+    let nextAlarmTime = 60; // Primera alarma a los 60 segundos
+
+    interval = setInterval(() => {
+        const elapsedTime = (Date.now() - startTime) / 1000; // Tiempo transcurrido en segundos
+
+        // Alarma inicial a los 60 segundos
+        if (!hasPlayedInitialAlarm && elapsedTime >= 60) {
+            playSound(); // Reproduce el sonido
+            hasPlayedInitialAlarm = true;
+            nextAlarmTime = 230; // Configura la siguiente alarma a los 230 segundos (60 + 170)
+        }
+
+        // Alarmas repetitivas cada 170 segundos
+        if (elapsedTime >= nextAlarmTime) {
+            playSound(); // Reproduce el sonido
+            nextAlarmTime += 170; // Actualiza para la siguiente alarma
+        }
+
+    }, 100); // Actualización precisa cada 100ms
+}
+
+
+// Función para detener el contador
+function stopCounter() {
+    clearInterval(interval);
+    isRunning = false;
+}
+
+/* TIPO DE SERVICIO Y TECNOLOGIA me falta crear la lógica*/
+const opcionesTiposervicio = {
+    'HFC': ['Internet', 'Telefonía', 'TV_Digital', 'One_TV_2.0'],
+    'GPON': ['Internet', 'IPTV', 'Telefonía', 'One_TV_2.0'],
+    'ADSL': ['Internet', 'IPTV', 'Telefonía', 'One_TV_2.0']
+}
+const opcionesNaturaleza = {
+    'Internet': ['No navega', 'Navegación Lenta', 'Servicio Intermitente', 'Problemas WiFi', 'Configuracion (WIFI, DMZ, PORF)'],
+    'Telefonía': ['No funciona línea telefónica', 'Servicio Intermitente', 'Mala Calidad Voz / Entrecortada', 'Ingresa llamada de otra línea', 'No salen ni entran llamadas'],
+    'TV_Digital': ['Sin señal', 'Tv no visualiza algunos canales', 'Mala calidad de imagen', 'Fallas en audio / subtítulos', 'Problemas con paquetes adicionales', 'Problemas con control remoto'],
+    'IPTV': ['Sin señal', 'Tv no visualiza algunos canales', 'Mala calidad de imagen', 'Fallas en audio / subtítulos', 'Problemas con paquetes adicionales', 'Problemas con control remoto'],
+    'One_TV_2.0': ['Sin señal', 'DRM falló', 'Imagen congelada / TV pixelada', 'Problemas de audio', 'Error de descarga', 'Problemas en comando de voz', 'Configuración de control', 'Problemas app One TV', 'Servicio intermitente']
+};
+
+// Cargar opciones de tecnología
+function cargarOpcionesTecnology() {
+    Object.keys(opcionesTiposervicio).forEach((tecnology, index) => {
+        const option = document.createElement('option');
+        option.value = tecnology;
+        option.textContent = tecnology;
+        if (index === 0) option.selected = true; // Seleccionar el primer hijo por defecto
+        selectTecnology.appendChild(option);
+    });
+}
+
+// Filtrar y cargar tipos de servicio
+function cargarOpcionesTipoServicio(tecnology) {
+    // Limpiar el select antes de agregar opciones
+    selectTipoServicio.innerHTML = '';
+    const servicios = opcionesTiposervicio[tecnology] || [];
+    servicios.forEach((servicio, index) => {
+        const option = document.createElement('option');
+        option.value = servicio;
+        option.textContent = servicio;
+        if (index === 0) option.selected = true; // Seleccionar el primer hijo por defecto
+        selectTipoServicio.appendChild(option);
+    });
+
+    // Cargar naturaleza por defecto para el primer servicio
+    const primerTipoServicio = servicios[0] || null;
+    if (primerTipoServicio) {
+        cargarOpcionesNaturaleza(primerTipoServicio);
+    }
+}
+
+// Cargar opciones de naturaleza
+function cargarOpcionesNaturaleza(tipoServicio) {
+    // Limpiar el select antes de agregar opciones
+    selectNaturaleza.innerHTML = '';
+    const naturalezas = opcionesNaturaleza[tipoServicio] || [];
+    naturalezas.forEach((naturaleza, index) => {
+        const option = document.createElement('option');
+        option.value = naturaleza;
+        option.textContent = naturaleza;
+        if (index === 0) option.selected = true; // Seleccionar el primer hijo por defecto
+        selectNaturaleza.appendChild(option);
+    });
+}
+
+// Eventos
+selectTecnology.addEventListener('change', (event) => {
+    const tecnologiaSeleccionada = event.target.value;
+    cargarOpcionesTipoServicio(tecnologiaSeleccionada);
+});
+
+selectTipoServicio.addEventListener('change', (event) => {
+    const tipoServicioSeleccionado = event.target.value;
+    cargarOpcionesNaturaleza(tipoServicioSeleccionado);
+});
+
+// Inicialización
+function inicializarSelects() {
+    cargarOpcionesTecnology();
+    const tecnologiaSeleccionada = selectTecnology.value;
+    cargarOpcionesTipoServicio(tecnologiaSeleccionada);
+}
+
+inicializarSelects();
+
+
+    </script>
+</body>
+</html>

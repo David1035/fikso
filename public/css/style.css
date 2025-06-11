@@ -1,0 +1,183 @@
+body {
+    display: grid;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Estilo general del header */
+.header-container {
+    margin-top: 20px;
+     /* background-color: #f0f0f0; Color de fondo del header */
+    text-align: center; /* Centrar contenido */
+    border-bottom: 2px solid #ddd; /* Borde inferior */
+}
+
+/* Estilo de los enlaces como botones */
+.nav-links a {
+    display: inline-block; /* Hacerlos bloques en línea */
+    margin: 2px; /* Espaciado entre los botones */
+    padding: 5px 10px; /* Espaciado interno del botón */
+    text-decoration: none; /* Eliminar subrayado */
+    color: #333; /* Color del texto */
+    background-color: #e0e0e0; /* Fondo del botón */
+    border: 2px solid #ccc; /* Borde del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 16px; /* Tamaño de la fuente */
+    margin-bottom: 9px;
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+/* Cambios al pasar el mouse */
+.nav-links a:hover {
+    background-color: #ccc; /* Fondo más oscuro al pasar el mouse */
+    color: #000; /* Color del texto más oscuro */
+    border-color: #bbb; /* Cambiar el color del borde */
+}
+
+.main-container {
+    max-width: 400px;
+    margin-top: 20px;
+    display: grid;
+    justify-content: center;
+    background-color: rgb(250, 253, 255);
+    padding: 20px;
+
+}
+.input-container {
+    width: 105px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #297e21;
+    outline: none;
+    line-height: 1.5; /* Espaciado cómodo entre líneas */
+    box-sizing: border-box; /* Incluye el padding y borde en las dimensiones */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
+    font-weight: bold; /* Texto grueso */
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+    color: #4a5568; /* Un gris oscuro suave para el texto */
+    background-color: #f8fafc; /* Un fondo gris claro para resaltar el texto */
+    transition: border 0.3s ease, box-shadow 0.3s ease; /* Animación suave al interactuar */
+    
+}
+
+.select-container {
+    border-radius: 15px;
+    border: 1px solid #297e21;
+    border: none;
+}
+
+.form-container-class {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10%;
+}
+
+
+.invisible label {
+    color: #4a4a8c; /* Un tono azul/violeta suave que combina bien con un fondo gris claro */
+    font-weight: bold; /* Letra gruesa */
+    font-size: 16px; /* Aumenta el tamaño para mayor visibilidad */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra sutil para dar profundidad */
+    
+}
+.observaciones-container {
+    width: 90%;
+    border-radius: 12px;
+    border: 1px solid #d1d5db; /* Un gris claro suave para el borde */
+    outline: none; /* Elimina el contorno predeterminado al hacer focus */
+    padding: 10px; /* Más espacio interno para comodidad */
+    overflow: hidden;
+    resize: none; /* Desactiva el cambio de tamaño (si es un textarea) */
+    height: 50px;
+    line-height: 1.5; /* Espaciado cómodo entre líneas */
+    box-sizing: border-box; /* Incluye el padding y borde en las dimensiones */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
+    font-weight: bold; /* Texto grueso */
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+    color: #4a5568; /* Un gris oscuro suave para el texto */
+    background-color: #f8fafc; /* Un fondo gris claro para resaltar el texto */
+    transition: border 0.3s ease, box-shadow 0.3s ease; /* Animación suave al interactuar */
+}
+.observaciones-container:focus {
+    background-color: #F4FFC3;
+    box-shadow: 0 0 10px rgba(0, 0, 0 , 0.1);
+    }
+    .observaciones-container:hover {
+        background-color: #F4FFC3;
+        box-shadow: 0 0 10px rgba(0, 0, 0 , 0.1);
+        }
+.btnGeneral:focus {
+    background-color: #97cef3;
+    outline: none;
+}
+.btnGeneral:hover {
+    background-color: #97cef3;
+    outline: none;
+}
+.btnGeneral {
+    width: 70px;
+    background-color: #eeeda6;
+    border: 1px solid transparent;
+    padding: 3px 6px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #297e21;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    transition: 0.3s;
+    
+    }
+input:hover {
+    background-color: #F4FFC3;
+}
+input:focus {
+    background-color: #F4FFC3;
+    }
+    select:hover {
+        background-color: #F4FFC3;
+        }
+        select:focus {
+            background-color: #F4FFC3;
+            }
+/* Estilos para los botones habilitados */
+button:enabled {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Estilos para los botones deshabilitados */
+button:disabled {
+    background-color: #ccc; /* Color gris para indicar que está deshabilitado */
+    color: #666;           /* Texto más claro */
+    cursor: not-allowed;   /* Cambiar el cursor a "prohibido" */
+    opacity: 0.6;          /* Reducir opacidad */
+}
+
+.invisible {
+    display: none;
+}
+
+.contador-tiempo-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0 , 0.1);
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar datos</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header-container">
+        <nav class="nav-links">
+            <a href="frontend/formConsultaBd.html" target="_blank">🔍</a>
+            <a href="frontend/plantillasEmtelco.html" target="_blank">Plantillas</a>
+            <a href="frontend/consultaPorIdLLamada.html" target="_blank">Consulta Id llamada</a>
+            <a href="frontend/multicCasosCriticos.html" target="_blank">Multic</a>
+        </nav>
+    </header>    
+    <main class="main-container">
+        <form action="" id="form-container" class="form-container-class">
+            <button id="btnInicio" class="btnGeneral">INICIO</button>
+
+            <label for="id-llamada">Id</label>
+            <input type="text" id="id-llamada" class="input-container">
+
+            <label for="name">Name</label>
+            <input type="text" id="name" class="input-container">
+            <label for="documentoIdentidad">CC</label>
+            <input type="number" id="documentoIdentidad" class="input-container">
+            <label for="smnet">Smnet</label>
+            <input type="text" id="smnet" class="input-container">
+
+            <label for="observaciones"></label>
+            <textarea id="observaciones" class="observaciones-container"></textarea>
+
+            <label for="tecnology">Tecnology</label>
+            <select name="tecnology" id="tecnology" class="select-container"></select>
+            <label for="tipoServicio">Tigo</label>
+            <select name="tipoServicio" id="tipoServicio" class="select-container"></select>
+            <label for="naturaleza">Falla</label>
+            <select name="naturaleza" id="naturaleza" class="select-container"></select>
+            
+            
+
+            <div id="horario-b2b-invisible" class="form-container-class invisible">
+                <label for="atiende-b2b">Atiende</label>
+            <input type="text" id="atiende-b2b" class="input-container">
+            <label for="celular-b2b">Celular</label>
+            <input type="text" id="celular-b2b" class="input-container">
+            
+            
+            <label for="dias-atencion">Dias Atiende</label>
+            <select name="dias-atencion" id="dias-atencion" class="select-container">
+                <option value="Lunes a Viernes">Lunes a Viernes</option>
+                <option value="Lunes a Sábado">Lunes a Sábado</option>
+                <option value="Lunes a Domingo">Lunes a Domingo</option>
+            </select>
+            <label for="horario-atencion">Horario</label>
+            <input type="text" id="horario-atencion" class="input-container">
+
+            <!-- Nuevos campos -->
+            <label for="permiso-especial">Si se requiere permiso especial</label>
+            <input type="text" id="permiso-especial" class="input-container" required>
+
+            <label for="horario-especial-sabado">Horario especial día sábado</label>
+            <input type="text" id="horario-especial-sabado" class="input-container">
+
+            <label for="horario-especial-domingo">Horario especial día domingo</label>
+            <input type="text" id="horario-especial-domingo" class="input-container">
+            </div>
+            
+            <button id="btnCopiar" class="btnGeneral">COPIAR</button>
+            <button id="btnEnviar" class="btnGeneral">ENVIAR</button>
+
+            <label for="celular">Teléfono</label>
+            <input type="text" id="celular" class="input-container">
+
+            <label for="horario-b2b">¿Horario de B2B?</label>
+            <select name="horario-b2b" id="horario-b2b" class="select-container">
+                <option value="no">No</option>
+                <option value="si">Si</option>
+            </select>
+
+            <label for="modoDeTrabajo">Plantilla </label>
+            <select name="modoDeTrabajo" id="modoDeTrabajo" class="select-container btnGeneral">
+                <option value="N1">N1</option>
+                <option value="N2">PYMES</option>
+            </select>
+            
+        </form>
+        <h1 id="datos-copiados" class="datos-copiados"></h1>
+        <p id="totalTiempoText" class="contador-tiempo-container"></p>
+        <p id="ahtDiario" class="contador-tiempo-container"></p>
+        <div class="form-container-class">
+            <button id="btn-elite" class="btnGeneral">Elite</button>
+            <button id="btn-fenix" class="btnGeneral">Fenix</button>
+            <button id="btn-pwd" class="btnGeneral">Pwd</button>
+        </div>
+    </main>
+    <script src="js/formDocument.js"></script>
+    <script src="js/dinamicList.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <title>Gestión de Registros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .btn-edit {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-save {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        textarea {
+            resize: none;
+            width: 100%;
+            font-family: inherit;
+            font-size: 14px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Registros</h1>
+    <label for="ingresar-valores">Ingresar Registros</label>
+    <input type="text" id="ingresar-valores">
+    <button onclick="consultarTodos()">Cargar Registros</button>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Documento</th>
+                <th>ID Llamada</th>
+                <th>Observaciones</th>
+                <th>Tipo Plantilla</th>
+                <th>Tiempo Promedio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tablaRegistros"></tbody>
+    </table>
+
+    <script>
+        
+        const apiUrl = 'http://localhost:5000/api/forms';
+
+        // Consultar todos los registros
+        async function consultarTodos() {
+            try {
+                const input = document.getElementById('ingresar-valores');
+                const valor = input.value.trim();
+                const datosInput = valor ? `?limit=${valor}` : `?limit=7`;
+                const response = await fetch(apiUrl + datosInput);
+                const data = await response.json();
+
+                const tabla = document.getElementById("tablaRegistros");
+                tabla.innerHTML = ""; // Limpiar la tabla
+
+                data.forEach((registro) => {
+                    tabla.innerHTML += `
+                        <tr id="row-${registro.id}">
+                            <td>${registro.id}</td>
+                            <td><span class="view">${registro.name}</span><input class="edit" type="text" value="${registro.name}" style="display:none;"></td>
+                            <td><span class="view">${registro.documentoIdentidad}</span><input class="edit" type="text" value="${registro.documentoIdentidad}" style="display:none;"></td>
+                            <td><span class="view">${registro.idLlamada}</span><input class="edit" type="text" value="${registro.idLlamada}" style="display:none;"></td>
+                            <td>
+                                <span class="view">${registro.observaciones}</span>
+                                <textarea class="edit" style="display:none;" oninput="adjustTextareaHeight(this)">${registro.observaciones}</textarea>
+                            </td>
+                            <td><span class="view">${registro.tipoPlantilla}</span><input class="edit" type="text" value="${registro.tipoPlantilla}" style="display:none;"></td>
+                            <td><span class="view">${registro.tiempoPromedio}</span><input class="edit" type="number" value="${registro.tiempoPromedio}" style="display:none;"></td>
+                            <td>
+                                <button class="btn-edit" onclick="habilitarEdicion(${registro.id})">Editar</button>
+                                <button class="btn-save" style="display:none;" onclick="guardarEdicion(${registro.id})">Guardar</button>
+                                <button class="btn-delete" onclick="eliminarRegistro(${registro.id})">Eliminar</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            } catch (error) {
+                console.error("Error al consultar todos los registros:", error);
+            }
+        }
+        consultarTodos()
+
+        // Habilitar edición
+        function habilitarEdicion(id) {
+            const row = document.getElementById(`row-${id}`);
+            row.querySelectorAll(".view").forEach(el => el.style.display = "none");
+            row.querySelectorAll(".edit").forEach(el => el.style.display = "inline");
+            row.querySelector(".btn-edit").style.display = "none";
+            row.querySelector(".btn-save").style.display = "inline";
+
+            // Ajustar dinámicamente la altura del textarea
+            const textarea = row.querySelector("textarea.edit");
+            adjustTextareaHeight(textarea);
+        }
+
+        // Guardar edición
+        async function guardarEdicion(id) {
+            const row = document.getElementById(`row-${id}`);
+            const name = row.querySelectorAll(".edit")[0].value;
+            const documentoIdentidad = row.querySelectorAll(".edit")[1].value;
+            const idLlamada = row.querySelectorAll(".edit")[2].value;
+            const observaciones = row.querySelectorAll(".edit")[3].value;
+            const tipoPlantilla = row.querySelectorAll(".edit")[4].value;
+            const tiempoPromedio = parseFloat(row.querySelectorAll(".edit")[5].value);
+
+            try {
+                const response = await fetch(`${apiUrl}/${id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, documentoIdentidad, idLlamada, observaciones, tipoPlantilla, tiempoPromedio }),
+                });
+
+                if (!response.ok) throw new Error("No se pudo modificar el registro.");
+                alert("Registro modificado con éxito.");
+                consultarTodos();
+            } catch (error) {
+                console.error("Error al modificar el registro:", error);
+            }
+        }
+
+        // Eliminar un registro
+        async function eliminarRegistro(id) {
+            if (!confirm("¿Estás seguro de que deseas eliminar este registro?")) return;
+
+            try {
+                const response = await fetch(`${apiUrl}/${id}`, { method: "DELETE" });
+                if (!response.ok) throw new Error("No se pudo eliminar el registro.");
+                alert("Registro eliminado con éxito.");
+                consultarTodos();
+            } catch (error) {
+                console.error("Error al eliminar el registro:", error);
+            }
+        }
+
+        // Ajustar dinámicamente la altura del textarea
+        function adjustTextareaHeight(textarea) {
+            textarea.style.height = "auto";
+            textarea.style.height = `${textarea.scrollHeight}px`;
+        }
+    </script>
+</body>
+</html>

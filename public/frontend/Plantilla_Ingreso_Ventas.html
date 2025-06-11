@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con Tabla</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        td:first-child {
+            width: 30%;
+        }
+        td input {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            resize: vertical;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .copy-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .clear-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Formulario de Registro</h2>
+    <form id="dataForm">
+        <table>
+            <tr>
+                <th>Campo</th>
+                <th>Valor</th>
+            </tr>
+            <tr>
+                <td>ID Llamada</td>
+                <td><input type="text" id="id_llamada"></td>
+            </tr>
+            <tr>
+                <td>Nombre del Cliente</td>
+                <td><input type="text" id="nombre_cliente"></td>
+            </tr>
+            <tr>
+                <td>Identificación</td>
+                <td><input type="text" id="identificacion"></td>
+            </tr>
+            <tr>
+                <td>Celular</td>
+                <td><input type="text" id="celular"></td>
+            </tr>
+            <tr>
+                <td>Teléfono Alternativo</td>
+                <td><input type="text" id="telefono_alternativo"></td>
+            </tr>
+            <tr>
+                <td>Celular FullTigo</td>
+                <td><input type="text" id="celular_fulltigo"></td>
+            </tr>
+            <tr>
+                <td>Dirección de Instalación</td>
+                <td><input type="text" id="direccion_instalacion"></td>
+            </tr>
+            <tr>
+                <td>Departamento</td>
+                <td><input type="text" id="departamento"></td>
+            </tr>
+            <tr>
+                <td>Ciudad</td>
+                <td><input type="text" id="ciudad"></td>
+            </tr>
+            <tr>
+                <td>Barrio</td>
+                <td><input type="text" id="barrio"></td>
+            </tr>
+            <tr>
+                <td>Servicios Agregar</td>
+                <td><input type="text" id="servicios_agregar"></td>
+            </tr>
+            <tr>
+                <td>Plan</td>
+                <td><input type="text" id="plan"></td>
+            </tr>
+            <tr>
+                <td>Precio</td>
+                <td><input type="text" id="precio"></td>
+            </tr>
+            <tr>
+                <td>Correo Electrónico</td>
+                <td><input type="email" id="correo_electronico"></td>
+            </tr>
+            <tr>
+                <td>Evidente</td>
+                <td><input type="text" id="evidente"></td>
+            </tr>
+        </table>
+        <div class="buttons">
+            <button type="button" class="copy-btn" onclick="copiarDatos()">Copiar Datos</button>
+            <button type="button" class="clear-btn" onclick="limpiarFormulario()">Limpiar Datos</button>
+        </div>
+    </form>
+
+    <script>
+        function copiarDatos() {
+            let form = document.getElementById('dataForm');
+            let datos = '';
+            let inputs = form.querySelectorAll('input');
+            
+            inputs.forEach(input => {
+                let label = input.closest('tr').querySelector('td:first-child');
+                if (label) {
+                    datos += `${label.textContent.trim()}: ${input.value}\n`;
+                }
+            });
+            
+            navigator.clipboard.writeText(datos).then(() => {
+                //alert('Datos copiados al portapapeles');
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+        }
+        
+        function limpiarFormulario() {
+            document.querySelectorAll('input').forEach(input => input.value = '');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar datos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header-container">
+        <nav class="nav-links">
+            <a href="#">🔍</a>
+            <a href="#">Plantillas</a>
+            <a href="#">Consulta Id llamada</a>
+        </nav>
+    </header>    
+    <main class="main-container">
+        <form action="" id="form-container" class="form-container-class">
+            <h2>Formulario de Registro</h2>
+            
+            <div class="form-group">
+                <label for="id-llamada">Id</label>
+                <input type="text" id="id-llamada">
+            </div>
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name">
+            </div>
+            <div class="form-group">
+                <label for="documentoIdentidad">CC</label>
+                <input type="number" id="documentoIdentidad">
+            </div>
+            <div class="form-group">
+                <label for="smnet">Smnet</label>
+                <input type="text" id="smnet">
+            </div>
+            
+            <div class="form-group full-width">
+                <label for="observaciones">Observaciones</label>
+                <textarea id="observaciones"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="tecnology">Tecnología</label>
+                <select id="tecnology"></select>
+            </div>
+            <div class="form-group">
+                <label for="tipoServicio">Tigo</label>
+                <select id="tipoServicio"></select>
+            </div>
+            <div class="form-group">
+                <label for="naturaleza">Falla</label>
+                <select id="naturaleza"></select>
+            </div>
+            
+            <div class="buttons-container">
+                <button id="btnCopiar">Copiar</button>
+                <button id="btnEnviar">Enviar</button>
+            </div>
+        </form>
+    </main>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+    }
+    .main-container {
+        width: 100%;
+        max-width: 500px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+    .full-width {
+        width: 100%;
+    }
+    .buttons-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    #btnCopiar {
+        background: #28a745;
+        color: white;
+    }
+    #btnCopiar:hover {
+        background: #218838;
+    }
+    #btnEnviar {
+        background: #007bff;
+        color: white;
+    }
+    #btnEnviar:hover {
+        background: #0056b3;
+    }
+</style>
+</html>
