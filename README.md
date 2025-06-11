@@ -1,0 +1,2 @@
+# fikso
+Proyecto con .exe
